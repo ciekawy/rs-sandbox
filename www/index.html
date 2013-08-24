@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 
+        <link href="assets/apprise/apprise.min.css" rel="stylesheet" />
+ -->
+
+        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" title="main">
+        
+        <!--
+        <link href="assets/font-awesome/font-awesome.min.css" rel="stylesheet">
+        <link href="assets/bootstrap-slider/bootstrap-slider.min.css" rel="stylesheet" />
+        
+        <link href="assets/nouislider/nouislider.min.css" rel="stylesheet" />
+        -->
+
+        <script type="text/javascript" src="assets/jquery.js"></script>
+<!-- 
+        <script type="text/javascript" src="assets/i18next.min.js"></script>
+        <script type="text/javascript" src="assets/apprise/apprise.min.js"></script>
+        <script type="text/javascript" src="assets/segment-display.min.js"></script>
+        <script type="text/javascript" src="assets/bootstrap-tabdrop.min.js"></script>
+        <script type="text/javascript" src="assets/nouislider/nouislider.min.js"></script>
+
+        <script type="text/javascript" src="assets/app.js"></script>
+        
+        <script type="text/javascript" src="cordova.js"></script>
+ -->
+
+        <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <!-- 
+        <script type="text/javascript" src="assets/bootstrap-slider/modernizr.min.js"></script>
+        <script type="text/javascript" src="assets/bootstrap-slider/bootstrap-slider.min.js"></script>
+         -->
+
+		    <script src="assets/angular.min.js"></script>
+		    <script src="assets/angular-animate.min.js"></script>
+        <script type="text/javascript">//<![CDATA[ angular.module('App', ['ngAnimate']); //]]></script>
+        <title>PhoneGap Testing</title>
+    </head>
+    <body>
+    <div class="container" ng-init="friends = [
+      {name:'Malbec', age:2010, gender: 'red'}
+      {name:'Carmenere', age:2005, gender:'red'},
+      {name:'cabernet sauvignon', age:2013, gender:'red'},
+      {name:'Shiraz', age:2008, gender:'red'},
+      {name:'Merlot', age:2005, gender:'red'},
+      {name:'Zinfandel', age:2008, gender:'red'},
+      {name:'Pinot Noir', age:2005, gender:'red'},
+      {name:'Nero Davola', age:2005, gender:'red'}
+      {name:'Chardonnay', age:2012, gender:'red'}
+      
+    ]">
+    
+    Hello!<br>
+      I have {{friends.length}} friends. They are:
+      <input type="search" ng-model="q" placeholder="filter friends..." />
+      
+      <!-- -->
+      <table class="table table-condensed table-hover example-animate-container">
+        <tr class="animate-repeat ng-class:($index%2)? 'success' : '';" ng-repeat="friend in friends | filter:q">
+    <td>[{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.</td>
+  </tr>
+      </table>
+    
+    </div>
+    
+    </body>
+    
+</html>
