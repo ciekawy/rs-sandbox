@@ -47,5 +47,47 @@
       </testResource>
        -->
     </testResources>
+
+	<pluginManagement>
+	  <plugins>
+			<plugin>
+				<groupId>com.github.chrisprice</groupId>
+				<artifactId>phonegap-build-maven-plugin</artifactId>
+				<version>0.0.5-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>phonegap-build</id>
+						<!-- the goals are lifecycle bound by default -->
+						<goals>
+							<goal>clean</goal>
+							<goal>build</goal>
+						</goals>
+						<configuration>
+							<platforms>
+                <platform>android</platform>
+                <platform>ios</platform>
+							</platforms>
+							<iOsKeyId>sandbox0p</iOsKeyId>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!--  while phonegap plugin is not fully functional 
+			  we need this to copy config.xml -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <webResources>
+            <resource>
+              <!-- this is relative to the pom.xml directory -->
+              <directory>src/main/phonegap-build</directory>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>			
+	  </plugins>
+	</pluginManagement>
   </build>
 </project>
