@@ -39,36 +39,107 @@
 
 		    <script src="assets/angular.min.js"></script>
 		    <script src="assets/angular-animate.min.js"></script>
+		    <!-- 
         <script type="text/javascript">//<![CDATA[ angular.module('App', ['ngAnimate']); //]]></script>
+		     -->
+        <script type="text/javascript" src="js/index.js"></script>
+        <style type="text/css">
+@media (max-width: 1200px) {
+    .container-no-padding { 
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}        
+        </style>
+        
         <title>PhoneGap Testing</title>
     </head>
-    <body>
-    <div class="container" ng-init="friends = [
-      {name:'Malbec', age:2010, gender: 'red'}
-      {name:'Carmenere', age:2005, gender:'red'},
-      {name:'cabernet sauvignon', age:2013, gender:'red'},
-      {name:'Shiraz', age:2008, gender:'red'},
-      {name:'Merlot', age:2005, gender:'red'},
-      {name:'Zinfandel', age:2008, gender:'red'},
-      {name:'Pinot Noir', age:2005, gender:'red'},
-      {name:'Nero Davola', age:2005, gender:'red'}
-      {name:'Chardonnay', age:2012, gender:'red'}
-      
-    ]">
-    
-    Hello!<br>
-      I have {{friends.length}} friends. They are:
-      <input type="search" ng-model="q" placeholder="filter friends..." />
-      
-      <!-- -->
-      <table class="table table-condensed table-hover example-animate-container">
-        <tr class="animate-repeat ng-class:($index%2)? 'success' : '';" ng-repeat="friend in friends | filter:q">
-    <td>[{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.</td>
-  </tr>
-      </table>
-    
+		<body style="background-color: gray;">
+			<!-- 
+		     containter sideeffect is marginn 15px -->
+			<div class="container container-no-padding" style="background-color: white;"
+				ng-controller="jsonp_example" ng-init="init(); load() ">
+				<nav class="navbar navbar-default" role="navigation">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target=".navbar-ex1-collapse">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Fake bar</a>
+					</div>
+		
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-ex1-collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Dummy</a></li>
+							<li><a href="#">Link</a></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Just for previev</a></li>
+									<li><a href="#">bootstrap 3</a></li>
+									<li><a href="#">layout</a></li>
+								</ul></li>
+						</ul>
+						<form class="navbar-form navbar-left" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
+							</div>
+							<button type="submit" class="btn btn-default">Submit</button>
+						</form>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#">Link</a></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li><a href="#">Separated link</a></li>
+								</ul></li>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</nav>
+
+
+    <div class="form-group container">
+	    <form>
+		    query the movies db
+		    <div class="input-group">
+			    <input id='query-field'
+			      class="form-control" type="text" ng-model="query" placeholder="query movies..." ng-init="query='mind'"/>
+			    <span ng-click="query = ''" class="input-group-addon">x</span>
+		    </div>
+		    <br> filter the movie list 
+		    <input
+		      class="form-control" type="text" ng-model="f" placeholder="filter movies..." />
+	    </form>
     </div>
-    
-    </body>
-    
+
+		<!-- 
+      -->
+		<table
+			class="table table-condensed table-hover example-animate-container">
+			<tr class="animate-repeat ng-class:($index%2)? 'success' : '';"
+				ng-repeat="movie in movies | filter:f">
+				<td>{{movie.original_title}}</td><td>
+					{{movie.release_date.substring(0,4)}}</td>
+					<td><img ng-if="movie.backdrop_path.length > 0" src="http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w45/{{movie.backdrop_path}}"></td>
+			</tr>
+		</table>
+
+		<!-- 
+		<button ng-click="load()">Make JSONP request</button>
+		<span ng-bind="testlog"></span>
+       -->
+	</div>
+
+</body>
+
 </html>
